@@ -1,6 +1,6 @@
 # L-Kamesam-Tripp-Mathur-Bernard
 
-Final visualization project for DS4200 (Macro LTI). 
+Final visualization project for DS4200 (Macro LTI).
 
 Team members: Rishab Mathur, Isabel Tripp, Haig Bernard, Mounica Kamesam
 
@@ -23,6 +23,8 @@ Task table: Our Task table can be found here - https://docs.google.com/document/
 Design Iterations (past sketches -> final design): TBD
 
 Visualization/Justifications/packages/UI walkthrough: TBD
+We are using JS/HTML/CSS for the UI.
+As of now, we can read in the data from the CSV files and would like to display the survey question distributions for Questions 45 and 46, regarding citizens' perceptions of their land rights. Eventually we hope to analyze these in the context of the various Landmark indices/explore the overlap. We hope this information would best serve NGO's so that they can help citizens take appropriate action to protect their land.
 
 Data Analysis (summary of interesting results): TBD
 
