@@ -1,0 +1,40 @@
+.topnav {
+  background-color: #292F33;
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  font-family: sans-serif;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #CCD6DD;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #66757F;
+  color: white;
+}
+
+.sidenav {
+  height: 100%;
+  width: 160px;
+  top: 20px;
+  position: relative;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+.sidenav img {
+  width: 120px;
+  padding-left: 10px;
+}
