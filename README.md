@@ -1,6 +1,6 @@
 # L-Kamesam-Tripp-Mathur-Bernard
 
-Visualization project for CS 4500.
+Final visualization project for DS4200 (Macro LTI). 
 
 Team members: Rishab Mathur, Isabel Tripp, Haig Bernard, Mounica Kamesam
 
