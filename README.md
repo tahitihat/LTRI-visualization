@@ -8,6 +8,11 @@ Repository URL: https://github.ccs.neu.edu/DS4200-S19/L-Kamesam-Tripp-Mathur-Ber
 
 Link to the Github Pages site: https://pages.github.ccs.neu.edu/DS4200-S19/L-Kamesam-Tripp-Mathur-Bernard/index.html
 
+
+**For Sprint 1 work: feel free to look at sprint1 branch.**
+
+
+
 Motivation: Our service learning partner requested that we investigate the various ways that countries around the world protect people's land rights, especially in certain northwestern African countries such as Liberia. Alfred, our community partner, would like to investigate government policies, laws/regulations/enforcements, and acquirements, in order to draw insights as to how best to protect individuals' land rights.
 
 Data: We are exploring data from eight African countries: BurkinaFaso, Cameroon, Coted_Ivoire, Liberia, Madagascar, Mozambique, Rwanda, and Zambia. For each of these countries, we have data from a survey responses (from a Land Alliance for Properties of People and Places) for approximately 84 questions. These survey responses are broken down into sections, based on areas involving: a general screening/background, respondent profile, tenure assessment of dwelling, tenure security perceptions, documentation, benefits of tenure security, and property rights context and perceptions.
