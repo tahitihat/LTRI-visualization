@@ -1,35 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title> DS 4200 LTRI Visualization </title>
-    <link rel="stylesheet" type="text/css" href="countries.css">
 
-    <script src='https://d3js.org/d3.v4.min.js'> </script> 
-    <script src="data.js"></script>
-  
-  </head>
-  <body>
-    <div class="topnav">
-      <a class="active" href="#home">Home: Final Visualization</a>
-      <a>Motivation</a>
-      <a>Data</a>
-      <a>Task Analysis</a>
-      <a>Design Process</a>
-      <a>Data Analysis</a>
-      <a>Conclusion</a>
-    </div>
+<head>
+  <title> DS 4200 LTRI Visualization </title>
+  <link rel="stylesheet" type="text/css" href="countries.css">
+
+  <script src='https://d3js.org/d3.v4.min.js'> </script>
+  <script src="data.js"></script>
+
+</head>
+
+<body>
+  <div class="topnav">
+    <a class="active" href="#home">Home: Final Visualization</a>
+    <a>Motivation</a>
+    <a>Data</a>
+    <a>Task Analysis</a>
+    <a>Design Process</a>
+    <a>Data Analysis</a>
+    <a>Conclusion</a>
+  </div>
 
   <!-- content -->
-    <div class="sidenav">
-      <img src="./LabeledCountries/BurkinaFaso.png" alt="Burkina Faso">
-      <img src="./LabeledCountries/Cameroon.png" alt="Cameroon">
-      <img src="./LabeledCountries/Coted_Ivoire.png" alt="Cote d'Ivoire">
-      <img src="./LabeledCountries/Liberia.png" alt="Liberia">
-      <img src="./LabeledCountries/Madagascar.png" alt="Madagascar">
-      <img src="./LabeledCountries/Mozambique.png" alt="Mozambique">
-      <img src="./LabeledCountries/Rwanda.png" alt="Rwanda">
-      <img src="./LabeledCountries/Zambia.png" alt="Zambia">
-    </div>
-  </body>
+  <div id='indicatorBox'>
+    <h5>Indicators of the Legal Security of Indigenous and Community Lands</h5>
+    <form id="indicators">
+      <input type='radio' id="average" name="mode" checked> Average<br>
+      <input type='radio' id="status" name="mode">Legal Status<br>
+      <input type='radio' id="commonProperty" name="mode">Land Rights & Common Property<br>
+      <input type='radio' id="doc" name="mode">Formal Documentation<br><br>
+    </form>
+  </div>
+
+  <div id='questionBox'>
+    <h5>Prindex Land Rights Survey</h5>
+    <form id="questions">
+      <input type='radio' id="q45" name="mode" checked>Question 45<br>
+      <input type='radio' id="q46" name="mode">Question 46<br>
+    </form>
+  </div>
+
+  <div class="sidenav">
+    <img src="./LabeledCountries/BurkinaFaso.png" alt="Burkina Faso">
+    <img src="./LabeledCountries/Cameroon.png" alt="Cameroon">
+    <img src="./LabeledCountries/Coted_Ivoire.png" alt="Cote d'Ivoire">
+    <img src="./LabeledCountries/Liberia.png" alt="Liberia">
+    <img src="./LabeledCountries/Madagascar.png" alt="Madagascar">
+    <img src="./LabeledCountries/Mozambique.png" alt="Mozambique">
+    <img src="./LabeledCountries/Rwanda.png" alt="Rwanda">
+    <img src="./LabeledCountries/Zambia.png" alt="Zambia">
+  </div>
+</body>
 
 </html>
