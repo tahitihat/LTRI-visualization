@@ -112,9 +112,6 @@ d3.csv("./data/survey/AdjustedQuestion45.csv", function (error, data) {
     .domain([-maxNum, maxNum]);
 
   function indicatorChange() {
-    console.log('wish ')
-    // clear chart 
-
     // get indicator value 
     var form = document.getElementById("indicators")
     var form_val;
@@ -123,7 +120,6 @@ d3.csv("./data/survey/AdjustedQuestion45.csv", function (error, data) {
         form_val = form[i].id;
       }
     }
-    console.log(form_val);
     var newColor = fetchColor(form_val);
 
     // draw graph 
