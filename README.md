@@ -11,8 +11,6 @@ Link to the Github Pages site: https://pages.github.ccs.neu.edu/DS4200-S19/L-Kam
 
 **For Sprint 1 work: feel free to look at sprint1 branch.**
 
-
-
 Motivation: Our service learning partner requested that we investigate the various ways that countries around the world protect people's land rights, especially in certain northwestern African countries such as Liberia. Alfred, our community partner, would like to investigate government policies, laws/regulations/enforcements, and acquirements, in order to draw insights as to how best to protect individuals' land rights.
 
 Data: We are exploring data from eight African countries: BurkinaFaso, Cameroon, Coted_Ivoire, Liberia, Madagascar, Mozambique, Rwanda, and Zambia. For each of these countries, we have data from a survey responses (from a Land Alliance for Properties of People and Places) for approximately 84 questions. These survey responses are broken down into sections, based on areas involving: a general screening/background, respondent profile, tenure assessment of dwelling, tenure security perceptions, documentation, benefits of tenure security, and property rights context and perceptions.
@@ -23,13 +21,16 @@ The indicator scores are all numeric, and all the countries are categorical. In 
 
 Task Analysis: During our interview with Alfred (our community partner), we decided to ask him about his specific goals regarding the indices, and we found that he is trying to determine a ranking that can help NGO's drive reform. He is looking to develop an index that can better inform NGO's about ways to help citizens of the various African countries have a clearer idea of their land rights and defend them in the most effective ways.
 
-Task table: Our Task table can be found here - https://docs.google.com/document/d/1I1A_earU3zM90Ga7e9pMZrifTlYV_kE-lfFslJyykO8/edit?usp=sharing
+Task table: https://docs.google.com/document/d/1I1A_earU3zM90Ga7e9pMZrifTlYV_kE-lfFslJyykO8/edit?usp=sharing
 
-Design Iterations (past sketches -> final design): TBD
+Design Iterations (past sketches -> final design):
+Since our last sprint, we revised our design for the purposes of this visualization. From meeting with Prof. Sprague, we decided to construct a visualization displaying the distribution of various survey answers from the LTSI survey responses. The following is the user flow we are attempting to build: First, a user clicks on the country shapes that they would like to compare survey responses for (ideally we will cap this at 3 countries). Next, the user can select the radio button corresponding to the survey question they'd like to view the distributions for. The user can also select a radio button corresponding to the types of indicators they'd like to compare country survey data distributions against (as outlined in the Landmark data). These indicators are scores for fields like 'legal status', 'land rights and common property', etc. There are ten such indicators, and we plan to have a tagline for each, along with a quick description of what information the score measures.
 
-Visualization/Justifications/packages/UI walkthrough: TBD
+We decided to create violin plots to convey the data distributions since they allow for easy visualization of data across several groups. They are also convenient and adapt well for large datasets. Violin plots are a combination of box plots and a probability density mirrored on an axis, to show the distribution shape of the data.    
+
+Visualization/Justifications/packages/UI walkthrough:
 We are using JS/HTML/CSS for the UI.
-As of now, we can read in the data from the CSV files and would like to display the survey question distributions for Questions 45 and 46, regarding citizens' perceptions of their land rights. Eventually we hope to analyze these in the context of the various Landmark indices/explore the overlap. We hope this information would best serve NGO's so that they can help citizens take appropriate action to protect their land.
+We use the following as a guideline for the violin plot code: https://www.d3-graph-gallery.com/graph/violin_basicHist.html
 
 Data Analysis (summary of interesting results): TBD
 
