@@ -34,6 +34,7 @@ Since our last sprint, we revised our design for the purposes of this visualizat
   - Rights to Trees
   - Rights to Water
   - Land Rights in Protected Areas
+  
 We plan to have these tag lines for each score, along with a quick description of what information the score measures.
 
 We decided to create violin plots to convey the data distributions since they allow for easy visualization of data across several groups. They are also convenient and adapt well for large datasets. Violin plots are a combination of box plots and a probability density mirrored on an axis, to show the distribution shape of the data.    
