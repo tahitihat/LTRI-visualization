@@ -25,9 +25,18 @@
   color: white;
 }
 
-.sidenav {
+.indicatorBox {
+  width: 40%;
+}
+
+.questionBox {
+  width: 40%;
+  x
+}
+
+.sidenavOne {
   height: 100%;
-  width: 160px;
+  width: 20%%;
   top: 20px;
   position: relative;
   z-index: 1;
@@ -35,13 +44,31 @@
   left: 0;
   overflow-x: hidden;
   padding-top: 20px;
+  padding-bottom: 20
 }
 .sidenav img {
-  width: 120px;
+  width: 100px;
   padding-left: 10px;
+  vertical-align: top;
 }
 
 .sidenav button {
   width: 160px;
   padding-left: 10px;
+}
+
+#BurkinaFaso {
+  height: 108px;
+  vertical-align: bottom;
+  padding-bottom: 5px;
+}
+
+#Liberia {
+  height: 153px;
+  vertical-align: bottom;
+}
+
+#Mozambique {
+  height: 175px;
+  vertical-align: bottom;
 }
