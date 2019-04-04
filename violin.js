@@ -35,10 +35,13 @@ var y = d3.scaleLinear()
 
 svg.append("g").call(d3.axisLeft(y))
 
+// array of countries to plot
+selectedCountries = ["Cameroon", "Burkina_Faso", "Liberia", "Costa_Rica"]
+
 // Build x scale
 var x = d3.scaleBand()
   .range([0, width])
-  .domain(["Burkina_Faso", "Cameroon", "Costa_Rica"])
+  .domain(selectedCountries) // only plot the 'selected countries'
   .padding(0.05)
 svg.append("g")
   .attr("transform", "translate(0," + height + ")")
@@ -56,7 +59,13 @@ function drawGraph(data, sumstat, xNum, startColor) {
     .data(sumstat)
     .enter()
     .append("g")
-    .attr("transform", function (d) { return ("translate(" + x(d.key) + " ,0)") }) // Translation on the right to be at the group position
+    .filter(function(d) {
+      //console.log(d);
+      return selectedCountries.indexOf(d.key) > -1; // filter by selected countries
+    })
+    .attr("transform", function (d) {
+      //console.log(d); // print the countries
+      return ("translate(" + x(d.key) + " ,0)"); }) // Translation on the right to be at the group position
     .append("path")
     .datum(function (d) { return (d.value) })
     .style("stroke", "none")
@@ -82,12 +91,13 @@ function fetchColor(indicator) {
 }
 
 // Read in survey data
-d3.csv("./data/survey/AdjustedQuestion45.csv", function (error, data) {
+d3.csv("./data/survey/Questions.csv", function (error, data) {
   if (error) throw error;
 
   // Compute the binning for each group of the dataset
   var sumstat = d3.nest()  // nest function allows to group the calculation per level of a factor
     .key(function (d) {
+      //console.log(d.country);
       return d.country;
     })
     .rollup(function (d) {
@@ -97,7 +107,7 @@ d3.csv("./data/survey/AdjustedQuestion45.csv", function (error, data) {
     })
     .entries(data)
 
-  // What is the biggest number of value in a bin? 
+  // What is the biggest number of value in a bin?
   var maxNum = 0
   for (i in sumstat) {
     allBins = sumstat[i].value
@@ -112,7 +122,7 @@ d3.csv("./data/survey/AdjustedQuestion45.csv", function (error, data) {
     .domain([-maxNum, maxNum]);
 
   function indicatorChange() {
-    // get indicator value 
+    // get indicator value
     var form = document.getElementById("indicators")
     var form_val;
     for (var i = 0; i < form.length; i++) {
