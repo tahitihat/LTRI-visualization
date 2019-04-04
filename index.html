@@ -19,51 +19,47 @@
     <a href="./conclusion.html">Conclusion</a>
   </div>
 
-<div bigWrapper style = "padding-top: 20px;">
+  <div bigWrapper style="padding-top: 20px;">
 
-  <div id="countries" style = "float:left; width: 23%;">
+    <div class="sidenav">
+      <li><input type="checkbox" class="countryCheck" id="BurkinaFaso" />
+        <label for="BurkinaFaso"><img src="./LabeledCountries/BurkinaFaso.png" /></label>
+      </li>
+      <li><input type="checkbox" class="countryCheck" id="Coted_Ivoire" />
+        <label for="Coted_Ivoire"><img src="./LabeledCountries/Coted_Ivoire.png" /></label>
+      </li>
+      <li><input type="checkbox" class="countryCheck" id="Cameroon" />
+        <label for="Cameroon"><img src="./LabeledCountries/Cameroon.png" /></label>
+      </li>
+      <li><input type="checkbox" class="countryCheck" id="Liberia" />
+        <label for="Liberia"><img src="./LabeledCountries/Liberia.png" /></label>
+      </li>
+      <li><input type="checkbox" class="countryCheck" id="Madagascar" />
+        <label for="Madagascar"><img src="./LabeledCountries/Madagascar.png" /></label>
+      </li>
+      <li><input type="checkbox" class="countryCheck" id="Mozambique" />
+        <label for="Mozambique"><img src="./LabeledCountries/Mozambique.png" /></label>
+      </li>
+      <li><input type="checkbox" class="countryCheck" id="Rwanda" />
+        <label for="Rwanda"><img src="./LabeledCountries/Rwanda.png" /></label>
+      </li>
+      <li><input type="checkbox" class="countryCheck" id="Zambia" />
+        <label for="Zambia"><img src="./LabeledCountries/Zambia.png" /></label>
+      </li>
+    </div>
 
-  <div class="sidenav">
-    <button id="BurkinaFaso">
-      <img src="./LabeledCountries/BurkinaFaso.png" alt="Burkina Faso">
-    </button>
-    <button id="Coted_Ivoire">
-      <img src="./LabeledCountries/Coted_Ivoire.png" alt="Cote d'Ivoire">
-    </button>
-    <button id = "Cameroon">
-      <img src="./LabeledCountries/Cameroon.png" alt="Cameroon">
-    </button>
-    <button id="Liberia">
-      <img src="./LabeledCountries/Liberia.png" alt="Liberia">
-    </button>
-    <button id="Madagascar">
-      <img src="./LabeledCountries/Madagascar.png" alt="Madagascar">
-    </button>
-    <button id="Mozambique">
-      <img src="./LabeledCountries/Mozambique.png" alt="Mozambique">
-    </button>
-    <button id= "Rwanda">
-      <img src="./LabeledCountries/Rwanda.png" alt="Rwanda">
-    </button>
-    <button id="Zambia">
-      <img src="./LabeledCountries/Zambia.png" alt="Zambia">
-    </button>
+    <div id='questionBox' style="width:35%;">
+      <h5>Prindex Land Rights Survey</h5>
+      <form id="questions">
+        <input type='radio' id="q45" name="mode" checked>Question 45<br>
+        <input type='radio' id="q46" name="mode">Question 46<br>
+      </form>
+    </div>
+
   </div>
-
-</div>
-
-<div id='questionBox' style = "width:35%;">
-    <h5>Prindex Land Rights Survey</h5>
-    <form id="questions">
-      <input type='radio' id="q45" name="mode" checked>Question 45<br>
-      <input type='radio' id="q46" name="mode">Question 46<br>
-    </form>
-  </div>
-
-</div>
 
   <!-- content -->
-  <div id='indicatorBox' style = "float:left; width:42%;">
+  <div id='indicatorBox' style="float:left; width:42%;">
     <h5>Indicators of the Legal Security of Indigenous and Community Lands</h5>
     <form id="indicators">
       <input type='radio' id="Avg_Scr" name="mode" checked> Average<br>
@@ -81,10 +77,10 @@
   </div>
 
 
-  <div id="violin" style = "float:right; width:35%;"></div>
+  <div id="violin" style="float:right; width:35%;"></div>
   <script src='violin.js'></script>
 
-</div>
+  </div>
 
 </body>
 

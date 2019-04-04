@@ -1,4 +1,4 @@
-
+/* Some CSS inspired by: https://stackoverflow.com/questions/30663562/use-images-like-checkboxes */
 
 .topnav {
   background-color: #292F33;
@@ -31,44 +31,67 @@
 
 .questionBox {
   width: 40%;
-  x
 }
 
-.sidenavOne {
-  height: 100%;
-  width: 20%%;
-  top: 20px;
-  position: relative;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  overflow-x: hidden;
-  padding-top: 20px;
-  padding-bottom: 20
+.sidenav ul {
+  list-style-type: none;
 }
-.sidenav img {
+
+.sidenav li {
+  display: inline-block;
+}
+
+.sidenav .countryCheck {
+  display: none;
+}
+
+.sidenav label {
+  border: 1px solid #fff;
+  padding: 10px;
+  display: block;
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.sidenav label:before {
+  background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  border: 1px solid grey;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px;
+  transition-duration: 0.4s;
+  transform: scale(0);
+}
+
+.sidenav label img {
+  height: 100px;
   width: 100px;
-  padding-left: 10px;
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
   vertical-align: top;
 }
 
-.sidenav button {
-  width: 160px;
-  padding-left: 10px;
+:checked + label {
+  border-color: #ddd;
 }
 
-#BurkinaFaso {
-  height: 108px;
-  vertical-align: bottom;
-  padding-bottom: 5px;
+:checked + label:before {
+  content: "✓";
+  background-color: grey;
+  transform: scale(1);
 }
 
-#Liberia {
-  height: 153px;
-  vertical-align: bottom;
-}
-
-#Mozambique {
-  height: 175px;
-  vertical-align: bottom;
+:checked + label img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #333;
+  z-index: -1;
 }

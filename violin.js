@@ -2,18 +2,20 @@
 // Some code derived from example: https://bl.ocks.org/patiencehaggin/ffc6522a844cea9f0712282ba6d3cbeb
 
 const INDICATORMAP = new Map([
-  ['I1_Scr', 3],
-  ['I2_Scr', 3],
-  ['I3_Scr', 3],
+  ['I1_Scr', 0],
+  ['I2_Scr', 1],
+  ['I3_Scr', 2],
   ['I4_Scr', 3],
-  ['I5_Scr', 2],
-  ['I6_Scr', 2],
+  ['I5_Scr', 4],
+  ['I6_Scr', 5],
   ['I7_Scr', 4],
   ['I8_Scr', 3],
   ['I9_Scr', 3],
   ['I10_Scr', 3],
   ['Avg_Scr', 2.9],
 ]);
+
+var data = ["Madagascar", "Cameroon", "Costa_Rica"];
 
 var margin = { top: 10, right: 30, bottom: 30, left: 40 },
   width = 460 - margin.left - margin.right,
@@ -38,7 +40,7 @@ svg.append("g").call(d3.axisLeft(y))
 // Build x scale
 var x = d3.scaleBand()
   .range([0, width])
-  .domain(["Burkina_Faso", "Cameroon", "Costa_Rica"])
+  .domain(data)
   .padding(0.05)
 svg.append("g")
   .attr("transform", "translate(0," + height + ")")
@@ -73,9 +75,8 @@ function fetchColor(indicator) {
   var value = INDICATORMAP.get(indicator);
 
   var colors = d3.scaleLinear()
-    .domain(d3.ticks(0, 5, 11))
-    .range(["#5E4FA2", "#3288BD", "#66C2A5", "#ABDDA4", "#E6F598",
-      "#FFFFBF", "#FEE08B", "#FDAE61", "#F46D43", "#D53E4F", "#9E0142"]);
+    .domain([0, 4])
+    .range(["#a3e0c1", "#478e6b"]);
 
   var selectColor = colors(value);
   return selectColor;
@@ -126,12 +127,37 @@ d3.csv("./data/survey/AdjustedQuestion45.csv", function (error, data) {
     drawGraph(data, sumstat, xNum, newColor);
   };
 
-  // var questionChoice = d3.select("#questionBox");
-  // questionChoice.on("change", questionChange);
+  function questionChange() {
+    // get question value 
+    var form = document.getElementById("questions")
+    var form_val;
+    for (var i = 0; i < form.length; i++) {
+      if (form[i].checked) {
+        form_val = form[i].id;
+      }
+    }
 
-  var indicatorChoice = d3.select("#indicatorBox");
-  indicatorChoice.on("change", indicatorChange);
+    //TODO draw graph
+  };
 
+  function countryChange() {
+    // get selected countries 
+    var countries = [];
+    d3.selectAll(".countryCheck").each(function (d) {
+      country = d3.select(this);
+      if (country.property("checked")) {
+        countries.push(country.property("id"));
+      }
+    });
+
+    //TODO draw graph 
+  };
+
+  d3.select("#indicatorBox").on("change", indicatorChange);
+  d3.select("#questionBox").on("change", questionChange);
+  d3.selectAll(".countryCheck").on("change", countryChange);
+
+  //TODO start color needs to correspond to selected countries
   var startColor = '#69b3a2';
   drawGraph(data, sumstat, xNum, startColor);
 });
