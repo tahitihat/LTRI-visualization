@@ -1,15 +1,14 @@
+// Indices: I1_Scr,I2_Scr,I3_Scr,I4_Scr,I5_Scr,I6_Scr,I7_Scr,I8_Scr,I9_Scr,I10_Scr,Avg_Scr
+
 const IndicatorMap = new Map([
-    [I1_Scr, 3],
-    [I2_Scr, 3],
-    [I3_Scr, 3],
-    [I4_Scr, 3],
-    [I5_Scr, 2],
-    [I6_Scr, 2],
-    [I7_Scr, 4],
-    [I8_Scr, 3],
-    [I9_Scr, 3],
-    [I10_Scr, 3],
-    [Avg_Scr, 2.9],
+    ["Burkina Faso", [1, 1, 1, 1, 1, 1, 3, 2, 1, 2, 1.4]],
+    ["Cameroon", [3, 3, 3, 3, 2, 2, 4, 3, 3, 3, 2.9]],
+    ["Cote d'Ivoire", [3, 3, 3, 3, 3, 3, 3, 2, 2, 3, 2.8]],
+    ["Liberia", [3, 3, 3, 2, 2, 2, 3, 1, 1, 3, 2.3]],
+    ["Madagascar", [3, 4, 2, 3, 3, 3, 3, 3, 3, 3, 3.0]],
+    ["Mozambique", [1, 2, 1, 1, 3, 1, 3, 2, 1, 2, 1.7]],
+    ["Rwanda", [3, 3, 2, 4, 4, 2, 4, 1, 2, 3, 2.8]],
+    ["Zambia", [2, 1, 3, 4, 2, 1, 2, 2, 2, 2, 2.1]]
 ]);
 export default IndicatorMap;
 
