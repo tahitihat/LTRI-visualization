@@ -16,8 +16,8 @@ const INDICATORMAP = new Map([
 ]);
 
 var margin = { top: 10, right: 30, bottom: 30, left: 40 },
-  width = 460 - margin.left - margin.right,
-  height = 400 - margin.top - margin.bottom;
+  width = 1000 - margin.left - margin.right,
+  height = 500 - margin.top - margin.bottom;
 
 // append svg object to page
 var svg = d3.select("#violin")
@@ -36,7 +36,8 @@ var y = d3.scaleLinear()
 svg.append("g").call(d3.axisLeft(y))
 
 // array of countries to plot
-selectedCountries = ["Cameroon", "Burkina_Faso", "Liberia", "Costa_Rica"]
+selectedCountries = ["Burkina Faso", "Cameroon", "Cote d'Ivoire", "Liberia",
+  "Madagascar", "Mozambique", "Rwanda", "Zambia"];
 
 // Build x scale
 var x = d3.scaleBand()
@@ -60,7 +61,6 @@ function drawGraph(data, sumstat, xNum, startColor) {
     .enter()
     .append("g")
     .filter(function (d) {
-      //console.log(d);
       return selectedCountries.indexOf(d.key) > -1; // filter by selected countries
     })
     .attr("transform", function (d) {
@@ -97,7 +97,6 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
   // Compute the binning for each group of the dataset
   var sumstat = d3.nest()  // nest function allows to group the calculation per level of a factor
     .key(function (d) {
-      //console.log(d.country);
       return d.country;
     })
     .rollup(function (d) {
