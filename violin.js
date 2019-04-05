@@ -36,13 +36,13 @@ var y = d3.scaleLinear()
 svg.append("g").call(d3.axisLeft(y))
 
 // array of countries to plot
-selectedCountries = ["Burkina Faso", "Cameroon", "Cote d'Ivoire", "Liberia",
+allCountries = ["Burkina Faso", "Cameroon", "Cote d'Ivoire", "Liberia",
   "Madagascar", "Mozambique", "Rwanda", "Zambia"];
 
 // Build x scale
 var x = d3.scaleBand()
   .range([0, width])
-  .domain(selectedCountries) // only plot the 'selected countries'
+  .domain(allCountries)
   .padding(0.05)
 svg.append("g")
   .attr("transform", "translate(0," + height + ")")
@@ -54,17 +54,16 @@ var histogram = d3.histogram()
   .thresholds(y.ticks(20)) // resolution
   .value(d => d)
 
-function drawGraph(data, sumstat, xNum, startColor) {
+function drawGraph(sumstat, xNum, startColor) {
   svg
     .selectAll("myViolin")
     .data(sumstat)
     .enter()
     .append("g")
     .filter(function (d) {
-      return selectedCountries.indexOf(d.key) > -1; // filter by selected countries
+      return allCountries.indexOf(d.key) > -1; // filter by selected countries
     })
     .attr("transform", function (d) {
-      //console.log(d); // print the countries
       return ("translate(" + x(d.key) + " ,0)");
     }) // Translation on the right to be at the group position
     .append("path")
@@ -94,31 +93,40 @@ function fetchColor(indicator) {
 d3.csv("./data/survey/Questions.csv", function (error, data) {
   if (error) throw error;
 
-  // Compute the binning for each group of the dataset
-  var sumstat = d3.nest()  // nest function allows to group the calculation per level of a factor
-    .key(function (d) {
-      return d.country;
-    })
-    .rollup(function (d) {
-      input = d.map(function (g) { return g.response; })
-      bins = histogram(input)
-      return (bins)
-    })
-    .entries(data)
+  function calculateSumstat(question) {
+    // Compute the binning for each group of the dataset
+    var sumstat = d3.nest()  // nest function allows to group the calculation per level of a factor
+      .key(function (d) {
+        if (d.question === question) return d.country;
+        else return -1;
+      })
+      .rollup(function (d) {
+        input = d.map(function (g) { return g.response; })
+        bins = histogram(input)
+        return (bins)
+      })
+      .entries(data);
 
-  // What is the biggest number of value in a bin?
-  var maxNum = 0
-  for (i in sumstat) {
-    allBins = sumstat[i].value
-    lengths = allBins.map(function (a) { return a.length; })
-    longest = d3.max(lengths)
-    if (longest > maxNum) { maxNum = longest }
+    return sumstat;
   }
 
-  // The maximum width of a violin must be x.bandwidth = the width dedicated to a group
-  var xNum = d3.scaleLinear()
-    .range([0, x.bandwidth()])
-    .domain([-maxNum, maxNum]);
+  function calculateMaxNum(sumstat) {
+    // What is the biggest number of value in a bin?
+    var maxNum = 0
+    for (i in sumstat) {
+      allBins = sumstat[i].value
+      lengths = allBins.map(function (a) { return a.length; })
+      longest = d3.max(lengths)
+      if (longest > maxNum) { maxNum = longest }
+    }
+
+    // The maximum width of a violin must be x.bandwidth = the width dedicated to a group
+    var xNum = d3.scaleLinear()
+      .range([0, x.bandwidth()])
+      .domain([-maxNum, maxNum]);
+
+    return xNum;
+  }
 
   function indicatorChange() {
     // get indicator value
@@ -132,7 +140,7 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
     var newColor = fetchColor(form_val);
 
     // draw graph 
-    drawGraph(data, sumstat, xNum, newColor);
+    drawGraph(sum, xNum, newColor);
   };
 
   function questionChange() {
@@ -144,8 +152,16 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
         form_val = form[i].id;
       }
     }
-
-    //TODO draw graph
+    console.log(form_val);
+    if (form_val === "q45") {
+      sum = q45Sum;
+      xNum = q45XNum;
+    } else {
+      sum = q46Sum;
+      xNum = q46XNum;
+    }
+    //draw graph
+    drawGraph(sum, xNum, '#D3D3D3');
   };
 
   function countryChange() {
@@ -166,6 +182,13 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
   d3.selectAll(".countryCheck").on("change", countryChange);
 
   //TODO start color needs to correspond to selected countries
-  var startColor = '#69b3a2';
-  drawGraph(data, sumstat, xNum, startColor);
+  var startColor = '#D3D3D3';
+  var q45Sum = calculateSumstat("45");
+  var q46Sum = calculateSumstat("46");
+  var q45XNum = calculateMaxNum(q45Sum);
+  var q46XNum = calculateMaxNum(q46Sum);
+  var sum = q45Sum;
+  var xNum = q45XNum;
+
+  drawGraph(sum, xNum, startColor);
 });
