@@ -1,19 +1,24 @@
 // Some code derived from example: https://www.d3-graph-gallery.com/graph/violin_basicHist.html
 // Some code derived from example: https://bl.ocks.org/patiencehaggin/ffc6522a844cea9f0712282ba6d3cbeb
 
-const INDICATORMAP = new Map([
-  ['I1_Scr', 0],
-  ['I2_Scr', 1],
-  ['I3_Scr', 2],
-  ['I4_Scr', 3],
-  ['I5_Scr', 4],
-  ['I6_Scr', 5],
-  ['I7_Scr', 4],
-  ['I8_Scr', 3],
-  ['I9_Scr', 3],
-  ['I10_Scr', 3],
-  ['Avg_Scr', 2.9],
-]);
+const IndicatorMap = {
+  "Burkina Faso":
+    { "I1_Scr": 1, "I2_Scr": 1, "I3_Scr": 1, "I4_Scr": 1, "I5_Scr": 1, "I6_Scr": 1, "I7_Scr": 3, "I8_Scr": 2, "I9_Scr": 1, "I10_Scr": 2, "Avg_Scr": 1.4 },
+  "Cameroon":
+    { "I1_Scr": 3, "I2_Scr": 3, "I3_Scr": 3, "I4_Scr": 3, "I5_Scr": 2, "I6_Scr": 2, "I7_Scr": 4, "I8_Scr": 3, "I9_Scr": 3, "I10_Scr": 3, "Avg_Scr": 2.9 },
+  "Cote d'Ivoire":
+    { "I1_Scr": 3, "I2_Scr": 3, "I3_Scr": 3, "I4_Scr": 3, "I5_Scr": 3, "I6_Scr": 3, "I7_Scr": 3, "I8_Scr": 2, "I9_Scr": 2, "I10_Scr": 3, "Avg_Scr": 2.8 },
+  "Liberia":
+    { "I1_Scr": 3, "I2_Scr": 3, "I3_Scr": 3, "I4_Scr": 2, "I5_Scr": 2, "I6_Scr": 2, "I7_Scr": 3, "I8_Scr": 1, "I9_Scr": 1, "I10_Scr": 3, "Avg_Scr": 2.3 },
+  "Madagascar":
+    { "I1_Scr": 3, "I2_Scr": 4, "I3_Scr": 2, "I4_Scr": 3, "I5_Scr": 3, "I6_Scr": 3, "I7_Scr": 3, "I8_Scr": 3, "I9_Scr": 3, "I10_Scr": 3, "Avg_Scr": 3.0 },
+  "Mozambique":
+    { "I1_Scr": 1, "I2_Scr": 2, "I3_Scr": 1, "I4_Scr": 1, "I5_Scr": 3, "I6_Scr": 1, "I7_Scr": 3, "I8_Scr": 2, "I9_Scr": 1, "I10_Scr": 2, "Avg_Scr": 1.7 },
+  "Rwanda":
+    { "I1_Scr": 3, "I2_Scr": 3, "I3_Scr": 2, "I4_Scr": 4, "I5_Scr": 4, "I6_Scr": 2, "I7_Scr": 4, "I8_Scr": 1, "I9_Scr": 2, "I10_Scr": 3, "Avg_Scr": 2.8 },
+  "Zambia":
+    { "I1_Scr": 2, "I2_Scr": 1, "I3_Scr": 3, "I4_Scr": 4, "I5_Scr": 2, "I6_Scr": 1, "I7_Scr": 2, "I8_Scr": 2, "I9_Scr": 2, "I10_Scr": 2, "Avg_Scr": 2.1 }
+};
 
 var margin = { top: 10, right: 30, bottom: 30, left: 40 },
   width = 1000 - margin.left - margin.right,
@@ -58,7 +63,7 @@ function buildxScale() {
     .call(d3.axisBottom(x));
 }
 
-function drawGraph(sumstat, xNum, color) {
+function drawGraph(sumstat, xNum, indicator) {
   svg
     .selectAll("myViolin")
     .data(sumstat)
@@ -69,11 +74,15 @@ function drawGraph(sumstat, xNum, color) {
     })
     .attr("transform", function (d) {
       return ("translate(" + x(d.key) + " ,0)");
-    }) // Translation on the right to be at the group position
+    })
+    .style("fill", function (d) {
+      var value = IndicatorMap[d.key][indicator]; // color violin based on selected indicator 
+      return fetchColor(value);
+    })
     .append("path")
     .datum(function (d) { return (d.value) })
     .style("stroke", "none")
-    .style("fill", color)
+    .style("opacity", 0.5)
     .attr("d", d3.area()
       .x0(function (d) { return (xNum(-d.length)) })
       .x1(function (d) { return (xNum(d.length)) })
@@ -82,9 +91,7 @@ function drawGraph(sumstat, xNum, color) {
     );
 }
 
-function fetchColor(indicator) {
-  var value = INDICATORMAP.get(indicator);
-
+function fetchColor(value) {
   var colors = d3.scaleLinear()
     .domain([0, 4])
     .range(["#a3e0c1", "#478e6b"]);
@@ -143,10 +150,9 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
         form_val = form[i].id;
       }
     }
-    var newColor = fetchColor(form_val);
-
     // draw graph 
-    drawGraph(sum, xNum, newColor);
+    selectedIndicator = form_val
+    drawGraph(sum, xNum, selectedIndicator);
   };
 
   function questionChange() {
@@ -194,7 +200,7 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
     buildxScale();
     sum = calculateSumstat("45");
     xNum = calculateMaxNum(sum);
-    drawGraph(sum, xNum, '#D3D3D3');
+    drawGraph(sum, xNum, selectedIndicator);
   };
 
   d3.select("#indicatorBox").on("change", indicatorChange);
@@ -202,11 +208,11 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
   d3.selectAll(".countryCheck").on("change", countryChange);
 
   //TODO start color needs to correspond to selected countries
-  var startColor = '#D3D3D3';
   buildxScale(allCountries);
   var selected45 = true;
   var sum = calculateSumstat("45");
   var xNum = calculateMaxNum(sum);
+  var selectedIndicator = 'Avg_Scr';
 
-  drawGraph(sum, xNum, startColor);
+  drawGraph(sum, xNum, selectedIndicator);
 });
