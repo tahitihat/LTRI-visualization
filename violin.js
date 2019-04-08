@@ -76,7 +76,7 @@ function drawGraph(sumstat, xNum, indicator) {
       return ("translate(" + x(d.key) + " ,0)");
     })
     .style("fill", function (d) {
-      var value = IndicatorMap[d.key][indicator]; // color violin based on selected indicator 
+      var value = IndicatorMap[d.key][indicator]; // color violin based on selected indicator
       return fetchColor(value);
     })
     .append("path")
@@ -109,7 +109,7 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
     var sumstat = d3.nest()  // nest function allows to group the calculation per level of a factor
       .key(function (d) {
         return d.country;
-        // Filtering by question -- to remove? 
+        // Filtering by question -- to remove?
         // if (d.question === question) return d.country;
         // else return -1;
       })
@@ -150,13 +150,13 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
         form_val = form[i].id;
       }
     }
-    // draw graph 
+    // draw graph
     selectedIndicator = form_val
     drawGraph(sum, xNum, selectedIndicator);
   };
 
   function questionChange() {
-    // get question value 
+    // get question value
     var form = document.getElementById("questions")
     var form_val;
     for (var i = 0; i < form.length; i++) {
@@ -165,10 +165,10 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
       }
     }
     // if (form_val === "q45") {
-    //   selected45 = true; 
+    //   selected45 = true;
     //   sum = calculateSumstat("45");
     // } else {
-    //   selected45 = false; 
+    //   selected45 = false;
     //   sum = calculateSumstat("46");
     // }
     // xNum = calculateMaxNum(sum);
@@ -177,12 +177,17 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
   };
 
   function countryChange() {
-    // get selected countries 
+    // get selected countries
     var countries = [];
     d3.selectAll(".countryCheck").each(function (d) {
       country = d3.select(this);
       if (country.property("checked")) {
+        if (countries.length < 2) {
         countries.push(country.property("id"));
+      }
+      else {
+        country.property("checked", false);
+      }
       }
     });
     allCountries = countries;
