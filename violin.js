@@ -31,30 +31,34 @@ var svg = d3.select("#violin")
 // Build y scale
 var y = d3.scaleLinear()
   .domain([0, 7])
-  .range([height, 0])
+  .range([height, 0]);
 
-svg.append("g").call(d3.axisLeft(y))
+svg.append("g").call(d3.axisLeft(y));
 
 // array of countries to plot
 allCountries = ["Burkina Faso", "Cameroon", "Cote d'Ivoire", "Liberia",
   "Madagascar", "Mozambique", "Rwanda", "Zambia"];
 
 // Build x scale
-var x = d3.scaleBand()
-  .range([0, width])
-  .domain(allCountries)
-  .padding(0.05)
-svg.append("g")
-  .attr("transform", "translate(0," + height + ")")
-  .call(d3.axisBottom(x))
+let x;
 
 // Histogram
 var histogram = d3.histogram()
   .domain(y.domain())
   .thresholds(y.ticks(20)) // resolution
-  .value(d => d)
+  .value(d => d);
 
-function drawGraph(sumstat, xNum, startColor) {
+function buildxScale() {
+  x = d3.scaleBand()
+    .range([0, width])
+    .domain(allCountries)
+    .padding(0.05);
+  svg.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
+}
+
+function drawGraph(sumstat, xNum, color) {
   svg
     .selectAll("myViolin")
     .data(sumstat)
@@ -69,7 +73,7 @@ function drawGraph(sumstat, xNum, startColor) {
     .append("path")
     .datum(function (d) { return (d.value) })
     .style("stroke", "none")
-    .style("fill", startColor)
+    .style("fill", color)
     .attr("d", d3.area()
       .x0(function (d) { return (xNum(-d.length)) })
       .x1(function (d) { return (xNum(d.length)) })
@@ -97,8 +101,10 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
     // Compute the binning for each group of the dataset
     var sumstat = d3.nest()  // nest function allows to group the calculation per level of a factor
       .key(function (d) {
-        if (d.question === question) return d.country;
-        else return -1;
+        return d.country;
+        // Filtering by question -- to remove? 
+        // if (d.question === question) return d.country;
+        // else return -1;
       })
       .rollup(function (d) {
         input = d.map(function (g) { return g.response; })
@@ -152,16 +158,16 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
         form_val = form[i].id;
       }
     }
-    console.log(form_val);
-    if (form_val === "q45") {
-      sum = q45Sum;
-      xNum = q45XNum;
-    } else {
-      sum = q46Sum;
-      xNum = q46XNum;
-    }
-    //draw graph
-    drawGraph(sum, xNum, '#D3D3D3');
+    // if (form_val === "q45") {
+    //   selected45 = true; 
+    //   sum = calculateSumstat("45");
+    // } else {
+    //   selected45 = false; 
+    //   sum = calculateSumstat("46");
+    // }
+    // xNum = calculateMaxNum(sum);
+    // //draw graph
+    // drawGraph(sum, xNum, '#D3D3D3');
   };
 
   function countryChange() {
@@ -173,8 +179,22 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
         countries.push(country.property("id"));
       }
     });
+    allCountries = countries;
+    d3.selectAll("svg").remove();
 
-    //TODO draw graph 
+    svg = d3.select("#violin")
+      .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform",
+        "translate(" + margin.left + "," + margin.top + ")")
+      .append("g").call(d3.axisLeft(y));
+
+    buildxScale();
+    sum = calculateSumstat("45");
+    xNum = calculateMaxNum(sum);
+    drawGraph(sum, xNum, '#D3D3D3');
   };
 
   d3.select("#indicatorBox").on("change", indicatorChange);
@@ -183,12 +203,10 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
 
   //TODO start color needs to correspond to selected countries
   var startColor = '#D3D3D3';
-  var q45Sum = calculateSumstat("45");
-  var q46Sum = calculateSumstat("46");
-  var q45XNum = calculateMaxNum(q45Sum);
-  var q46XNum = calculateMaxNum(q46Sum);
-  var sum = q45Sum;
-  var xNum = q45XNum;
+  buildxScale(allCountries);
+  var selected45 = true;
+  var sum = calculateSumstat("45");
+  var xNum = calculateMaxNum(sum);
 
   drawGraph(sum, xNum, startColor);
 });

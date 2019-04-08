@@ -11,4 +11,3 @@ const IndicatorMap = new Map([
     ["Zambia", [2, 1, 3, 4, 2, 1, 2, 2, 2, 2, 2.1]]
 ]);
 export default IndicatorMap;
-
