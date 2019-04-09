@@ -126,11 +126,18 @@ function drawGraph(sumstat, xNum, indicator, question) {
 function fetchColor(value) {
   var colors = d3.scaleLinear()
     .domain([0, 4])
-    .range(["#a3e0c1", "#478e6b"]);
+    .range(["#00FFFF", "#483D8B"]);
 
+  // 1 : "rgb(18, 207, 226)"
+  // 2 "rgb(36, 158, 197)"
+  // 3 "rgb(54, 110, 168)"
+  // 4 "rgb(72, 61, 139)"
   var selectColor = colors(value);
+  console.log(value, selectColor);
+
   return selectColor;
 }
+
 
 // Read in survey data
 d3.csv("./data/survey/MondayQuestions.csv", function (error, data) {
