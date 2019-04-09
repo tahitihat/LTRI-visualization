@@ -24,7 +24,7 @@ const IndicatorMap = {
     { "I1_Scr": 3, "I2_Scr": 4, "I3_Scr": 2, "I4_Scr": 3, "I5_Scr": 3, "I6_Scr": 3, "I7_Scr": 3, "I8_Scr": 3, "I9_Scr": 3, "I10_Scr": 3, "Avg_Scr": 3.0 },
   "Mozambique Q45":
     { "I1_Scr": 1, "I2_Scr": 2, "I3_Scr": 1, "I4_Scr": 1, "I5_Scr": 3, "I6_Scr": 1, "I7_Scr": 3, "I8_Scr": 2, "I9_Scr": 1, "I10_Scr": 2, "Avg_Scr": 1.7 },
-  "Mozambique Q45":
+  "Mozambique Q46":
     { "I1_Scr": 1, "I2_Scr": 2, "I3_Scr": 1, "I4_Scr": 1, "I5_Scr": 3, "I6_Scr": 1, "I7_Scr": 3, "I8_Scr": 2, "I9_Scr": 1, "I10_Scr": 2, "Avg_Scr": 1.7 },
   "Rwanda Q45":
     { "I1_Scr": 3, "I2_Scr": 3, "I3_Scr": 2, "I4_Scr": 4, "I5_Scr": 4, "I6_Scr": 2, "I7_Scr": 4, "I8_Scr": 1, "I9_Scr": 2, "I10_Scr": 3, "Avg_Scr": 2.8 },
