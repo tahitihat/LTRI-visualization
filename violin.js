@@ -2,26 +2,42 @@
 // Some code derived from example: https://bl.ocks.org/patiencehaggin/ffc6522a844cea9f0712282ba6d3cbeb
 
 const IndicatorMap = {
-  "Burkina Faso":
+  "Burkina Faso Q45":
     { "I1_Scr": 1, "I2_Scr": 1, "I3_Scr": 1, "I4_Scr": 1, "I5_Scr": 1, "I6_Scr": 1, "I7_Scr": 3, "I8_Scr": 2, "I9_Scr": 1, "I10_Scr": 2, "Avg_Scr": 1.4 },
-  "Cameroon":
+  "Burkina Faso Q46":
+    { "I1_Scr": 1, "I2_Scr": 1, "I3_Scr": 1, "I4_Scr": 1, "I5_Scr": 1, "I6_Scr": 1, "I7_Scr": 3, "I8_Scr": 2, "I9_Scr": 1, "I10_Scr": 2, "Avg_Scr": 1.4 },
+  "Cameroon Q45":
     { "I1_Scr": 3, "I2_Scr": 3, "I3_Scr": 3, "I4_Scr": 3, "I5_Scr": 2, "I6_Scr": 2, "I7_Scr": 4, "I8_Scr": 3, "I9_Scr": 3, "I10_Scr": 3, "Avg_Scr": 2.9 },
-  "Cote d'Ivoire":
+  "Cameroon Q46":
+    { "I1_Scr": 3, "I2_Scr": 3, "I3_Scr": 3, "I4_Scr": 3, "I5_Scr": 2, "I6_Scr": 2, "I7_Scr": 4, "I8_Scr": 3, "I9_Scr": 3, "I10_Scr": 3, "Avg_Scr": 2.9 },
+  "Cote d'Ivoire Q45":
     { "I1_Scr": 3, "I2_Scr": 3, "I3_Scr": 3, "I4_Scr": 3, "I5_Scr": 3, "I6_Scr": 3, "I7_Scr": 3, "I8_Scr": 2, "I9_Scr": 2, "I10_Scr": 3, "Avg_Scr": 2.8 },
-  "Liberia":
+  "Cote d'Ivoire Q46":
+    { "I1_Scr": 3, "I2_Scr": 3, "I3_Scr": 3, "I4_Scr": 3, "I5_Scr": 3, "I6_Scr": 3, "I7_Scr": 3, "I8_Scr": 2, "I9_Scr": 2, "I10_Scr": 3, "Avg_Scr": 2.8 },
+  "Liberia Q45":
     { "I1_Scr": 3, "I2_Scr": 3, "I3_Scr": 3, "I4_Scr": 2, "I5_Scr": 2, "I6_Scr": 2, "I7_Scr": 3, "I8_Scr": 1, "I9_Scr": 1, "I10_Scr": 3, "Avg_Scr": 2.3 },
-  "Madagascar":
+  "Liberia Q46":
+    { "I1_Scr": 3, "I2_Scr": 3, "I3_Scr": 3, "I4_Scr": 2, "I5_Scr": 2, "I6_Scr": 2, "I7_Scr": 3, "I8_Scr": 1, "I9_Scr": 1, "I10_Scr": 3, "Avg_Scr": 2.3 },
+  "Madagascar Q45":
     { "I1_Scr": 3, "I2_Scr": 4, "I3_Scr": 2, "I4_Scr": 3, "I5_Scr": 3, "I6_Scr": 3, "I7_Scr": 3, "I8_Scr": 3, "I9_Scr": 3, "I10_Scr": 3, "Avg_Scr": 3.0 },
-  "Mozambique":
+  "Madagascar Q46":
+    { "I1_Scr": 3, "I2_Scr": 4, "I3_Scr": 2, "I4_Scr": 3, "I5_Scr": 3, "I6_Scr": 3, "I7_Scr": 3, "I8_Scr": 3, "I9_Scr": 3, "I10_Scr": 3, "Avg_Scr": 3.0 },
+  "Mozambique Q45":
     { "I1_Scr": 1, "I2_Scr": 2, "I3_Scr": 1, "I4_Scr": 1, "I5_Scr": 3, "I6_Scr": 1, "I7_Scr": 3, "I8_Scr": 2, "I9_Scr": 1, "I10_Scr": 2, "Avg_Scr": 1.7 },
-  "Rwanda":
+  "Mozambique Q45":
+    { "I1_Scr": 1, "I2_Scr": 2, "I3_Scr": 1, "I4_Scr": 1, "I5_Scr": 3, "I6_Scr": 1, "I7_Scr": 3, "I8_Scr": 2, "I9_Scr": 1, "I10_Scr": 2, "Avg_Scr": 1.7 },
+  "Rwanda Q45":
     { "I1_Scr": 3, "I2_Scr": 3, "I3_Scr": 2, "I4_Scr": 4, "I5_Scr": 4, "I6_Scr": 2, "I7_Scr": 4, "I8_Scr": 1, "I9_Scr": 2, "I10_Scr": 3, "Avg_Scr": 2.8 },
-  "Zambia":
+  "Rwanda Q46":
+    { "I1_Scr": 3, "I2_Scr": 3, "I3_Scr": 2, "I4_Scr": 4, "I5_Scr": 4, "I6_Scr": 2, "I7_Scr": 4, "I8_Scr": 1, "I9_Scr": 2, "I10_Scr": 3, "Avg_Scr": 2.8 },
+  "Zambia Q45":
+    { "I1_Scr": 2, "I2_Scr": 1, "I3_Scr": 3, "I4_Scr": 4, "I5_Scr": 2, "I6_Scr": 1, "I7_Scr": 2, "I8_Scr": 2, "I9_Scr": 2, "I10_Scr": 2, "Avg_Scr": 2.1 },
+  "Zambia Q46":
     { "I1_Scr": 2, "I2_Scr": 1, "I3_Scr": 3, "I4_Scr": 4, "I5_Scr": 2, "I6_Scr": 1, "I7_Scr": 2, "I8_Scr": 2, "I9_Scr": 2, "I10_Scr": 2, "Avg_Scr": 2.1 }
 };
 
 var margin = { top: 10, right: 30, bottom: 30, left: 40 },
-  width = 1000 - margin.left - margin.right,
+  width = 1025 - margin.left - margin.right,
   height = 500 - margin.top - margin.bottom;
 
 // append svg object to page
@@ -41,8 +57,7 @@ var y = d3.scaleLinear()
 svg.append("g").call(d3.axisLeft(y));
 
 // array of countries to plot
-allCountries = ["Burkina Faso", "Cameroon", "Cote d'Ivoire", "Liberia",
-  "Madagascar", "Mozambique", "Rwanda", "Zambia"];
+allCountries = ["Burkina Faso Q45", "Burkina Faso Q46", "Cameroon Q45", "Cameroon Q46"];
 
 // Build x scale
 let x;
@@ -63,7 +78,7 @@ function buildxScale() {
     .call(d3.axisBottom(x));
 }
 
-function drawGraph(sumstat, xNum, indicator) {
+function drawGraph(sumstat, xNum, indicator, question) {
   svg
     .selectAll("myViolin")
     .data(sumstat)
@@ -76,13 +91,30 @@ function drawGraph(sumstat, xNum, indicator) {
       return ("translate(" + x(d.key) + " ,0)");
     })
     .style("fill", function (d) {
-      var value = IndicatorMap[d.key][indicator]; // color violin based on selected indicator
-      return fetchColor(value);
+      var value;
+      if (d.key.charAt(d.key.length - 1) == question) {
+        value = IndicatorMap[d.key][indicator]; // color violin based on selected indicator
+        return fetchColor(value);
+      } else {
+        return '#DCDCDC';
+      }
+    })
+    .style("stroke", function (d) {
+      if (d.key.charAt(d.key.length - 1) == question) {
+        console.log('coral: ', d.key)
+        return "coral";
+      }
+      else {
+        console.log('none: ', d.key)
+        return "none";
+      }
+    })
+    .style("stroke-width", function (d) {
+      if (d.key.charAt(d.key.length - 1) == question) return 2;
+      else return 0;
     })
     .append("path")
     .datum(function (d) { return (d.value) })
-    .style("stroke", "none")
-    .style("opacity", 0.5)
     .attr("d", d3.area()
       .x0(function (d) { return (xNum(-d.length)) })
       .x1(function (d) { return (xNum(d.length)) })
@@ -101,17 +133,14 @@ function fetchColor(value) {
 }
 
 // Read in survey data
-d3.csv("./data/survey/Questions.csv", function (error, data) {
+d3.csv("./data/survey/MondayQuestions.csv", function (error, data) {
   if (error) throw error;
 
-  function calculateSumstat(question) {
+  function calculateSumstat() {
     // Compute the binning for each group of the dataset
     var sumstat = d3.nest()  // nest function allows to group the calculation per level of a factor
       .key(function (d) {
         return d.country;
-        // Filtering by question -- to remove?
-        // if (d.question === question) return d.country;
-        // else return -1;
       })
       .rollup(function (d) {
         input = d.map(function (g) { return g.response; })
@@ -119,7 +148,6 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
         return (bins)
       })
       .entries(data);
-
     return sumstat;
   }
 
@@ -151,8 +179,8 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
       }
     }
     // draw graph
-    selectedIndicator = form_val
-    drawGraph(sum, xNum, selectedIndicator);
+    selectedIndicator = form_val;
+    drawGraph(sum, xNum, selectedIndicator, selectedQuestion);
   };
 
   function questionChange() {
@@ -164,16 +192,24 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
         form_val = form[i].id;
       }
     }
-    // if (form_val === "q45") {
-    //   selected45 = true;
-    //   sum = calculateSumstat("45");
-    // } else {
-    //   selected45 = false;
-    //   sum = calculateSumstat("46");
-    // }
-    // xNum = calculateMaxNum(sum);
-    // //draw graph
-    // drawGraph(sum, xNum, '#D3D3D3');
+    if (form_val === "q45") {
+      selectedQuestion = "5";
+    } else {
+      selectedQuestion = "6";
+    }
+    d3.selectAll("svg").remove();
+
+    svg = d3.select("#violin")
+      .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform",
+        "translate(" + margin.left + "," + margin.top + ")")
+      .append("g").call(d3.axisLeft(y));
+
+    //draw graph
+    drawGraph(sum, xNum, selectedIndicator, selectedQuestion);
   };
 
   function countryChange() {
@@ -182,12 +218,12 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
     d3.selectAll(".countryCheck").each(function (d) {
       country = d3.select(this);
       if (country.property("checked")) {
-        if (countries.length < 2) {
-        countries.push(country.property("id"));
-      }
-      else {
-        country.property("checked", false);
-      }
+        if (countries.length < 6) {
+          countries.push(country.property("id") + " Q45");
+          countries.push(country.property("id") + " Q46");
+        } else {
+          country.property("checked", false);
+        }
       }
     });
     allCountries = countries;
@@ -203,21 +239,18 @@ d3.csv("./data/survey/Questions.csv", function (error, data) {
       .append("g").call(d3.axisLeft(y));
 
     buildxScale();
-    sum = calculateSumstat("45");
-    xNum = calculateMaxNum(sum);
-    drawGraph(sum, xNum, selectedIndicator);
+    drawGraph(sum, xNum, selectedIndicator, selectedQuestion);
   };
 
   d3.select("#indicatorBox").on("change", indicatorChange);
   d3.select("#questionBox").on("change", questionChange);
   d3.selectAll(".countryCheck").on("change", countryChange);
 
-  //TODO start color needs to correspond to selected countries
-  buildxScale(allCountries);
-  var selected45 = true;
-  var sum = calculateSumstat("45");
+  buildxScale();
+  var selectedQuestion = "5";
+  var sum = calculateSumstat();
   var xNum = calculateMaxNum(sum);
   var selectedIndicator = 'Avg_Scr';
 
-  drawGraph(sum, xNum, selectedIndicator);
+  drawGraph(sum, xNum, selectedIndicator, selectedQuestion);
 });
