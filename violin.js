@@ -207,6 +207,7 @@ d3.csv("./data/survey/MondayQuestions.csv", function (error, data) {
       .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")")
       .append("g").call(d3.axisLeft(y));
+    buildxScale();
 
     //draw graph
     drawGraph(sum, xNum, selectedIndicator, selectedQuestion);
