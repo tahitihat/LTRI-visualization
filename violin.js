@@ -53,12 +53,10 @@ var svg = d3.select("#violin")
 var y = d3.scaleLinear()
   .domain([0, 6])
   .range([height, 0]);
-// var scale = [0, 1, 2, 3, 4, 5, 6];
-  // var left_axis = d3.axisLeft(y); // UNCOMMENT THIS
 
-  // left_axis.ticks(6); // UNCOMMENT THIS
-  svg.append("g").call(d3.axisLeft(y)); // COMMENT THIS OUT
-   // svg.append("g").call(left_axis); // UNCOMMENT THIS
+  var left_axis = d3.axisLeft(y); 
+  left_axis.ticks(6);
+  svg.append("g").call(left_axis);
 
 // array of countries to plot
 allCountries = ["Burkina Faso Q45", "Burkina Faso Q46", "Cameroon Q45", "Cameroon Q46"];
@@ -217,7 +215,7 @@ d3.csv("./data/survey/MondayQuestions.csv", function (error, data) {
       .append("g")
       .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")")
-      .append("g").call(d3.axisLeft(y));
+      .append("g").call(left_axis);
     buildxScale();
 
     //draw graph
@@ -248,7 +246,7 @@ d3.csv("./data/survey/MondayQuestions.csv", function (error, data) {
       .append("g")
       .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")")
-      .append("g").call(d3.axisLeft(y));
+      .append("g").call(left_axis);
 
     buildxScale();
     drawGraph(sum, xNum, selectedIndicator, selectedQuestion);
