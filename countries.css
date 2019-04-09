@@ -89,6 +89,10 @@
   background-color: grey;
   transform: scale(1);
 }
+.key img {
+width: 50%;
+}
+
 
 :checked + label img {
   transform: scale(0.9);
