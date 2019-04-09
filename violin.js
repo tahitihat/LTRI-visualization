@@ -51,7 +51,7 @@ var svg = d3.select("#violin")
 
 // Build y scale
 var y = d3.scaleLinear()
-  .domain([0, 7])
+  .domain([0, 6])
   .range([height, 0]);
 
 svg.append("g").call(d3.axisLeft(y));
