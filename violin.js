@@ -49,6 +49,11 @@ var svg = d3.select("#violin")
   .attr("transform",
     "translate(" + margin.left + "," + margin.top + ")");
 
+// Define the div for the tooltip
+var div = d3.select("#violin").append("div")
+  .attr("class", "tooltip")
+  .style("opacity", 0);
+
 // Build y scale
 var y = d3.scaleLinear()
   .domain([0, 6])
@@ -112,6 +117,24 @@ function drawGraph(sumstat, xNum, indicator, question) {
     .style("stroke-width", function (d) {
       if (d.key.charAt(d.key.length - 1) == question) return 2;
       else return 0;
+    })
+    .on("mouseover", function (d) {
+      div.transition()
+        .duration(200)
+        .style("opacity", .9);
+      div.html("<p>6 count: " + d.value[30].length
+        + "<br>5 count: " + d.value[25].length
+        + "<br>4 count: " + d.value[20].length
+        + "<br>3 count: " + d.value[15].length
+        + "<br>2 count: " + d.value[10].length
+        + "<br>1 count: " + d.value[5].length + "</p>")
+        .style("left", (d3.event.pageX) + "px")
+        .style("top", (d3.event.pageY - 50) + "px");
+    })
+    .on("mouseout", function (d) {
+      div.transition()
+        .duration(500)
+        .style("opacity", 0);
     })
     .append("path")
     .datum(function (d) { return (d.value) })
