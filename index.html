@@ -3,8 +3,18 @@
 
 <head>
   <title> DS 4200 LTRI Visualization </title>
+  <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="countries.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <!-- D3 dependency -->
   <script src='https://d3js.org/d3.v4.min.js'> </script>
 </head>
 
@@ -20,92 +30,23 @@
     <a href="./conclusion.html">Conclusion</a>
   </div>
 
-  <h2>Citizen Land Rights Perception vs. Legal Security Indicators by Nation</h2>
-
-
-
-
-  <div id="violin" class="violin"></div>
-  <script src='violin.js'></script>
-
-  <div class="key">
-    <h3> Key </h3>
-    <img src="./LabeledCountries/colorspectrum.PNG"> </img>
-
-
-    <p>
-      <b> <u> Questions </u></b> <br>
-
-      <b>Question 45: </b>How worried are you that you could lose the right to use this property, or part of this
-      property, against your will in the next 5 years? <br>
-      6 : Refused<br>
-      5 : Don't know<br>
-      4 : Very worried<br>
-      3 : Somewhat worried<br>
-      2 : Not worried<br>
-      1 : Not worried at all <br>
-
-      <b> Question 46: </b>In the next 5 years, how likely or unlikely is it that you could lose the right to use this
-      property, or part of this property, against your will? <br>
-
-      6 : Refused<br>
-      5 : Don't know<br>
-      4 : Very likely<br>
-      3 : Somewhat likely<br>
-      2 : Unlikely<br>
-      1 : Very Unlikely<br>
-    </p>
-    <p>
-      <b> <u>Indicators </u> </b> <br>
-      <b>Average Score:</b> Average score for the 10 indicators of indigenous land legal security <br>
-
-      <b> Legal Status: </b> Does the law recognize all rights that Indigenous peoples exercise over their lands as
-      lawful forms of ownership?<br>
-
-      <b> Land Rights & Common Property: </b>Does the law give indigenous land rights the same level of protection as
-      the rights under other tenure systems?<br>
-
-      <b> Formal Documentation: </b>Does the law require the government to provide Indigenous peoples with a formal
-      title and map to their land?<br>
-
-      <b> Legal Person: </b>Does the law recognize Indigenous peoples as a legal person for the purposes of land
-      ownership?<br>
-
-      <b> Legal Authority: </b>Does the law recognize Indigenous peoples as the legal authority over the land?<br>
-
-      <b> Perpetuity: </b>Do the law and formal title recognize that indigenous land rights may be held in
-      perpetuity?<br>
-
-      <b> Right to Consent Before Land Acquisition:</b> Does the law require the consent of Indigenous peoples before
-      government or an outsider may acquire their land?<br>
-
-      <b> Rights to Trees:</b> Does the law explicitly recognize that indigenous land includes the rights to all trees
-      on the land?<br>
-
-      <b> Rights to Water:</b> Does the law explicitly recognize that indigenous land includes the rights to local water
-      sources on the land?<br>
-
-      <b> Land Rights in Protected Areas: </b>Does the law uphold indigenous land rights in the ownership and governance
-      of national parks and other protected areas?<br>
-    </p>
-
+  <div class="page-header">
+    <h3>Citizen Land Rights Perception vs. Legal Security Indicators by Nation</h3>
   </div>
 
+  <div class="countryViz">
+    <div id="violin" class="violin"></div>
+    <script src='violin.js'></script>
 
-
-
-
-  <div bigWrapper style="padding-top: 20px;">
-
-    <div class="sidenav">
+    <div class="countrynav">
       <li><input type="checkbox" class="countryCheck" id="Burkina Faso" />
         <label for="Burkina Faso"><img src="./LabeledCountries/BurkinaFaso.png" /></label>
       </li>
-      <li><input type="checkbox" class="countryCheck" id="Cote d'Ivoire" />
-        <label for="Cote d'Ivoire"><img src="./LabeledCountries/Coted_Ivoire.png" /></label>
-      </li>
       <li><input type="checkbox" class="countryCheck" id="Cameroon" />
         <label for="Cameroon"><img src="./LabeledCountries/Cameroon.png" /></label>
+      </li>
+      <li><input type="checkbox" class="countryCheck" id="Cote d'Ivoire" />
+        <label for="Cote d'Ivoire"><img src="./LabeledCountries/Coted_Ivoire.png" /></label>
       </li>
       <li><input type="checkbox" class="countryCheck" id="Liberia" />
         <label for="Liberia"><img src="./LabeledCountries/Liberia.png" /></label>
@@ -124,38 +65,50 @@
       </li>
 
     </div>
-
-    <div id='questionBox'>
-      <h5>Prindex Land Rights Survey</h5>
-      <form id="questions">
-        <input type='radio' id="q45" name="mode" checked>Question 45<br>
-        <input type='radio' id="q46" name="mode">Question 46<br>
-      </form>
-    </div>
-
   </div>
 
-  <!-- content -->
+  <div id="colorKey">
+    <img src="./LabeledCountries/colorspectrum.PNG"> </img>
+  </div>
+
   <div id='indicatorBox'>
-    <h5>Indicators of the Legal Security of Indigenous and Community Lands</h5>
-    <form id="indicators">
-      <input type='radio' id="Avg_Scr" name="mode" checked> Average<br>
-      <input type='radio' id="I1_Scr" name="mode">Legal Status<br>
-      <input type='radio' id="I2_Scr" name="mode">Land Rights & Common Property<br>
-      <input type='radio' id="I3_Scr" name="mode">Formal Documentation<br>
-      <input type='radio' id="I4_Scr" name="mode">Legal Person<br>
-      <input type='radio' id="I5_Scr" name="mode">Legal Authority<br>
-      <input type='radio' id="I6_Scr" name="mode">Perpetuity<br>
-      <input type='radio' id="I7_Scr" name="mode">Right to Consent Before Land Acquisition<br>
-      <input type='radio' id="I8_Scr" name="mode">Rights to Trees<br>
-      <input type='radio' id="I9_Scr" name="mode">Rights to Water<br>
-      <input type='radio' id="I10_Scr" name="mode">Land Rights in Protected Areas<br><br>
+    <h4>Legal Security Indicators of Indigenous and Community Land</h4>
+
+    <select id="indicators">
+      <option id="Avg_Scr">Average</option>
+      <option id="I1_Scr">Legal Status</option>
+      <option id="I2_Scr">Land Rights & Common Property</option>
+      <option id="I3_Scr">Formal Documentation</option>
+      <option id="I4_Scr">Legal Person</option>
+      <option id="I5_Scr">Legal Authority</option>
+      <option id="I6_Scr">Perpetuity</option>
+      <option id="I7_Scr">Right to Consent Before Land Acquisition</option>
+      <option id="I8_Scr">Rights to Trees</option>
+      <option id="I9_Scr">Rights to Water</option>
+      <option id="I10_Scr">Land Rights in Protected Areas</option>
+    </select>
+  </div>
+
+  <div id='questionBox'>
+    <h4>Prindex Land Rights Survey</h4>
+    <form id="questions">
+      <div class="checkbox">
+        <label><input type='radio' id="q45" name="mode" checked> Question 45</label>
+      </div>
+      <div class="checkbox">
+        <label><input type='radio' id="q46" name="mode"> Question 46</label>
+      </div>
     </form>
+
+    <p>
+      6 : Refused<br>
+      5 : Don't know<br>
+      4 : Very worried<br>
+      3 : Somewhat worried<br>
+      2 : Not worried<br>
+      1 : Not worried at all <br>
+    </p>
   </div>
-
-  </div>
-
-
 
 </body>
 

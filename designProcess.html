@@ -3,6 +3,7 @@
 
 <head>
   <title> DS 4200 LTRI Visualization </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="countries.css">
 
   <script src='https://d3js.org/d3.v4.min.js'> </script>
@@ -11,11 +12,11 @@
 <body>
   <div class="topnav">
     <a href="./index.html">Home: Final Visualization</a>
-    <a href="./instructions.html"> Instructions </a>    
+    <a href="./instructions.html"> Instructions </a>
     <a href="./motivation.html"> Motivation</a>
     <a href="./data.html">Data</a>
     <a href="./task.html">Analysis</a>
-    <a class = active href="#designProcess">Design Process </a>
+    <a class=active href="#designProcess">Design Process </a>
     <a href="./dataAnalysis.html">Data Analysis</a>
     <a href="./conclusion.html">Conclusion</a>
   </div>
@@ -23,36 +24,37 @@
   <p> Since our last sprint, we revised our design for the purposes of this
     visualization. From meeting with Prof. Sprague, we decided to construct a
     visualization displaying the distribution of various survey answers from the
-     LTSI survey responses. The following is the user flow we are attempting to
-     build: First, a user clicks on the country shapes that they would like to
-     compare survey responses for (ideally we will cap this at 3 countries).
-     Next, the user can select the radio button corresponding to the survey
-     question they'd like to view the distributions for. The user can also
-     select a radio button corresponding to the types of indicators they'd
-     like to compare country survey data distributions against (as outlined in
-  the Landmark data). These indicators are scores for ten fields including:
-  <br> &middot;Legal Status
-  <br> &middot;Land Rights & Common Property
-  <br> &middot;Formal Documentation
-  <br> &middot;Legal Person
-  <br> &middot;Legal Authority
-  <br> &middot;Perpetuity
-  <br> &middot;Right to Consent Before Land Acquisition
-  <br> &middot;Rights to Trees
-  <br> &middot;Rights to Water
-  <br> &middot;Land Rights in Protected Areas
-  <br> We plan to have these tag lines for each score, along with a quick
-   description of what information the score measures.</p>
+    LTSI survey responses. The following is the user flow we are attempting to
+    build: First, a user clicks on the country shapes that they would like to
+    compare survey responses for (ideally we will cap this at 3 countries).
+    Next, the user can select the radio button corresponding to the survey
+    question they'd like to view the distributions for. The user can also
+    select a radio button corresponding to the types of indicators they'd
+    like to compare country survey data distributions against (as outlined in
+    the Landmark data). These indicators are scores for ten fields including:
+    <br> &middot;Legal Status
+    <br> &middot;Land Rights & Common Property
+    <br> &middot;Formal Documentation
+    <br> &middot;Legal Person
+    <br> &middot;Legal Authority
+    <br> &middot;Perpetuity
+    <br> &middot;Right to Consent Before Land Acquisition
+    <br> &middot;Rights to Trees
+    <br> &middot;Rights to Water
+    <br> &middot;Land Rights in Protected Areas
+    <br> We plan to have these tag lines for each score, along with a quick
+    description of what information the score measures.</p>
 
-<p> We decided to create violin plots to convey the data distributions since
-  they allow for easy visualization of data across several groups. They are
-  also convenient and adapt well for large datasets. Violin plots are a
-  combination of box plots and a probability density mirrored on an axis,
-   to show the distribution shape of the data. </p>
+  <p> We decided to create violin plots to convey the data distributions since
+    they allow for easy visualization of data across several groups. They are
+    also convenient and adapt well for large datasets. Violin plots are a
+    combination of box plots and a probability density mirrored on an axis,
+    to show the distribution shape of the data. </p>
 
-<p> We are using JS (D3 Library)/HTML/CSS for the UI. We use
-<a href="https://www.d3-graph-gallery.com/graph/violin_basicHist.html"> this </a>
-as a guideline for the violin plot. </p>
+  <p> We are using JS (D3 Library)/HTML/CSS for the UI. We use
+    <a href="https://www.d3-graph-gallery.com/graph/violin_basicHist.html"> this </a>
+    as a guideline for the violin plot. </p>
 
 </body>
+
 </html>
