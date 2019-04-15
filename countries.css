@@ -25,27 +25,27 @@
   color: white;
 }
 
-.indicatorBox {
-  width: 40%;
+h3, h4 {
+  margin-left: 10px;
 }
 
-.questionBox {
-  width: 40%;
+.countryViz div {
+  float: left;
 }
 
-.sidenav ul {
-  list-style-type: none;
+.countrynav {
+  display: flex;
+  justify-content: space-between;
+}
+.countrynav li {
+  display: flex;
 }
 
-.sidenav li {
-  display: inline-block;
-}
-
-.sidenav .countryCheck {
+.countrynav .countryCheck {
   display: none;
 }
 
-.sidenav label {
+.countrynav label {
   border: 1px solid #fff;
   padding: 10px;
   display: block;
@@ -54,7 +54,7 @@
   cursor: pointer;
 }
 
-.sidenav label:before {
+.countrynav label:before {
   background-color: white;
   color: white;
   content: " ";
@@ -72,7 +72,7 @@
   transform: scale(0);
 }
 
-.sidenav label img {
+.countrynav label img {
   height: 100px;
   width: 100px;
   transition-duration: 0.2s;
@@ -90,22 +90,13 @@
   transform: scale(1);
 }
 
-
-.key img {
-  width: 100%;
+#colorKey img {
+  width: 27%;
 }
 
-.key {
-  float: right;
-  width: 30%;
-  height: 550px;
+#indicators {
+  width: 27%;
 }
-
-.violin {
-  float: left;
-}
-
-
 
 :checked + label img {
   transform: scale(0.9);

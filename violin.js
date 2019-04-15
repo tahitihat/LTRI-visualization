@@ -54,9 +54,9 @@ var y = d3.scaleLinear()
   .domain([0, 6])
   .range([height, 0]);
 
-  var left_axis = d3.axisLeft(y); 
-  left_axis.ticks(6);
-  svg.append("g").call(left_axis);
+var left_axis = d3.axisLeft(y);
+left_axis.ticks(6);
+svg.append("g").call(left_axis);
 
 // array of countries to plot
 allCountries = ["Burkina Faso Q45", "Burkina Faso Q46", "Cameroon Q45", "Cameroon Q46"];
@@ -103,11 +103,9 @@ function drawGraph(sumstat, xNum, indicator, question) {
     })
     .style("stroke", function (d) {
       if (d.key.charAt(d.key.length - 1) == question) {
-        console.log('coral: ', d.key)
         return "coral";
       }
       else {
-        console.log('none: ', d.key)
         return "none";
       }
     })
@@ -129,13 +127,7 @@ function fetchColor(value) {
   var colors = d3.scaleLinear()
     .domain([0, 4])
     .range(["#00FFFF", "#483D8B"]);
-
-  // 1 : "rgb(18, 207, 226)"
-  // 2 "rgb(36, 158, 197)"
-  // 3 "rgb(54, 110, 168)"
-  // 4 "rgb(72, 61, 139)"
   var selectColor = colors(value);
-  console.log(value, selectColor);
 
   return selectColor;
 }
@@ -180,15 +172,11 @@ d3.csv("./data/survey/MondayQuestions.csv", function (error, data) {
 
   function indicatorChange() {
     // get indicator value
-    var form = document.getElementById("indicators")
-    var form_val;
-    for (var i = 0; i < form.length; i++) {
-      if (form[i].checked) {
-        form_val = form[i].id;
-      }
-    }
+    var element = document.getElementById("indicators");
+    var ind = element.options[element.selectedIndex].id;
+
     // draw graph
-    selectedIndicator = form_val;
+    selectedIndicator = ind;
     drawGraph(sum, xNum, selectedIndicator, selectedQuestion);
   };
 
@@ -249,6 +237,8 @@ d3.csv("./data/survey/MondayQuestions.csv", function (error, data) {
       .append("g").call(left_axis);
 
     buildxScale();
+    sum = calculateSumstat();
+    xNum = calculateMaxNum(sum);
     drawGraph(sum, xNum, selectedIndicator, selectedQuestion);
   };
 
