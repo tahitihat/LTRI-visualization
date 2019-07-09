@@ -157,7 +157,7 @@ function fetchColor(value) {
 
 
 // Read in survey data
-d3.csv("./data/survey/MondayQuestions.csv", function (error, data) {
+d3.csv("./data/survey/QuestionData.csv", function (error, data) {
   if (error) throw error;
 
   function calculateSumstat() {
