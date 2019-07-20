@@ -85,6 +85,7 @@ function buildxScale() {
     .call(d3.axisBottom(x));
 }
 
+// Draw graph based on selected indiator/question/countries 
 function drawGraph(sumstat, xNum, indicator, question) {
   svg
     .selectAll("myViolin")
@@ -155,7 +156,6 @@ function fetchColor(value) {
   return selectColor;
 }
 
-
 // Read in survey data
 d3.csv("./data/survey/QuestionData.csv", function (error, data) {
   if (error) throw error;
@@ -217,17 +217,7 @@ d3.csv("./data/survey/QuestionData.csv", function (error, data) {
     } else {
       selectedQuestion = "6";
     }
-    d3.selectAll("svg").remove();
-
-    svg = d3.select("#violin")
-      .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform",
-        "translate(" + margin.left + "," + margin.top + ")")
-      .append("g").call(left_axis);
-    buildxScale();
+    svgReset();
 
     //draw graph
     drawGraph(sum, xNum, selectedIndicator, selectedQuestion);
@@ -248,18 +238,9 @@ d3.csv("./data/survey/QuestionData.csv", function (error, data) {
       }
     });
     allCountries = countries;
-    d3.selectAll("svg").remove();
 
-    svg = d3.select("#violin")
-      .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform",
-        "translate(" + margin.left + "," + margin.top + ")")
-      .append("g").call(left_axis);
+    svgReset();
 
-    buildxScale();
     sum = calculateSumstat();
     xNum = calculateMaxNum(sum);
     drawGraph(sum, xNum, selectedIndicator, selectedQuestion);
@@ -277,3 +258,18 @@ d3.csv("./data/survey/QuestionData.csv", function (error, data) {
 
   drawGraph(sum, xNum, selectedIndicator, selectedQuestion);
 });
+
+//Rebuild visualization
+function svgReset() {
+  d3.selectAll("svg").remove();
+
+  svg = d3.select("#violin")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform",
+      "translate(" + margin.left + "," + margin.top + ")")
+    .append("g").call(left_axis);
+  buildxScale();
+}

@@ -25,10 +25,6 @@
   color: white;
 }
 
-h3, h4 {
-  margin-left: 10px;
-}
-
 .countryViz div {
   float: left;
 }
@@ -90,12 +86,10 @@ h3, h4 {
   transform: scale(1);
 }
 
-#colorKey img {
-  width: 27%;
-}
-
 #indicators {
-  width: 27%;
+  margin-top: 10px;
+  width: 100%;
+  color: black;
 }
 
 div.tooltip {	
@@ -115,4 +109,33 @@ div.tooltip {
   transform: scale(0.9);
   box-shadow: 0 0 5px #333;
   z-index: -1;
+}
+
+#key-box {
+  z-index: 1;
+  color: rgb(202, 226, 241);
+  border-radius: 8px;
+  border: solid 1px gray;
+  padding: 15px 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
+  position: absolute;
+  right: 15px;
+  width: 27%;
+}
+
+#key-box img {
+  width: 100%;
+}
+
+#key-box h4, p {
+  color: #003F87;
+}
+
+#key-box form {
+  color: black;
+}
+
+#questionBox p {
+  margin: 0px;
 }
