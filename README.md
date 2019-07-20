@@ -19,5 +19,5 @@ For the purpose of this iteration, we chose to dive deeper into certain survey r
 We are using JS (D3 Library)/HTML/CSS for the UI.
 We use the following as a guideline for the violin plot code: https://www.d3-graph-gallery.com/graph/violin_basicHist.html
 
-**Conclusion **:
+**Conclusion**:
 Future work - Given our limited domain knowledge and time constraints, it is difficult to truly generalize about these countries' land and legal security. If presented with more time/resources/background knowledge, our next goal would be to consolidate all of the indicator scores to create a 'macro'-level score for each country. This would hopefully help inform NGO's and locals in these African countries of their land security. In order to do so, we would need to collect more information on the meaning of each of the ten scores, and explore ways to weight them in a meaningful way.
