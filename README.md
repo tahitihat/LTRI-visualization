@@ -1,9 +1,9 @@
 # D3 Visualization of Land Rights Tenure Data (acquired from Dr. Alfred Brownell)
 
 **Directions for use**: 
-1. Select 1 - 3 countries from the eight African countries we display below the violin plots. 
-2. Next select the Question you'd like to highlight the distribution for. 
-3. Select the Indicator you'd like to overlay the survey distribution for.
+1. Select 1 - 3 countries from the eight African countries displayed below the violin plots. 
+2. Next, select Question 45 or Question 46 to highlight that question distribution. 
+3. Finally, select an Indicator to color each country's survey distribution.
 
 You can also navigate to the pages in the upper nav bar for further information on motivation, data notes, analysis, and our design process. 
 
